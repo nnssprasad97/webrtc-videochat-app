@@ -33,6 +33,7 @@ export default function RoomClient({ roomId }: { roomId: string }) {
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
       .then((currentStream) => {
         setStream(currentStream);
+        (window as any).localStream = currentStream;
         if (localVideoRef.current) {
           localVideoRef.current.srcObject = currentStream;
         }
